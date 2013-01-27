@@ -3,7 +3,7 @@ var index = 1
 
 require('net').createServer(function(client) {
     clients.push(client)
-    client.name = 'client ' + index++
+    client.name = 'client_' + index++
     client.on('end', function() {
         broadcast('*' + client.name + ' gone\n')
         clients.slice(clients.indexOf(client,1))

@@ -5,9 +5,6 @@ var server = require('http').createServer(app)
 var io = require('socket.io').listen(server)
 
 app.use(express.static(__dirname))
-app.get('/', function(req, res) {
-    res.redirect("/index.html")
-})
 
 io.sockets.on('connection', function (client) {
     var chat = net.connect(1234)

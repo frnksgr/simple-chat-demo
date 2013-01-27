@@ -1,22 +1,12 @@
 
 <!DOCTYPE html>
-<style>
-    body {
-        background-color: #d0e4fe;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-</style>
-<h3>Chat</h3>
-<div>
-    <input id="msg" />
-    <button id="btn">Send Message</button>
-</div>
-<hr>
-<div id="display">
-</div>
-<script src="/jquery.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
 
+<h3>Chat</h3>
+<input id="msg" /><button id="btn">Send</button><hr />
+<div id="display" />
+
+<script src="/jquery.min.js" ></script>
+<script src="/socket.io/socket.io.js" ></script>
 <script>
     $(document).ready(function() {
         var socket = io.connect()
@@ -27,6 +17,7 @@
         $('#btn').click(function send() {
             var msg = $('#msg')
             socket.send(msg.val())
+            $('#display').prepend($('<div/>').text('me> ' + msg.val()))  
             msg.val('')            
         })
     })
