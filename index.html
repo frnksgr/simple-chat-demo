@@ -11,15 +11,19 @@
     $(document).ready(function() {
         var socket = io.connect()
         socket.on('message', function(msg) {
-            $('#display').prepend($('<div/>').text(msg))
+            display(msg)
         })
 
         $('#btn').click(function send() {
             var msg = $('#msg')
             socket.send(msg.val())
-            $('#display').prepend($('<div/>').text('me> ' + msg.val()))  
+            display('me> ' + msg.val()) 
             msg.val('')            
         })
+
+        function display(msg) {
+            $('#display').prepend($('<div/>').text(msg))            
+        }
     })
 </script>
 
